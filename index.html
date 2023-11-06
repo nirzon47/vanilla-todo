@@ -102,14 +102,16 @@
 				/>
 			</section>
 
-			<!-- Saved notes section -->
+			<!-- Saved notes heading -->
 			<h2 class="text-center font-bold text-2xl py-6">Saved Notes</h2>
 
+			<!-- Filter -->
 			<p class="text-center font-semibold text-lg pb-1">
 				Filter by <i class="fa-solid fa-filter ml-2"></i>
 			</p>
 
-			<div class="px-4 pt-1 pb-4 flex justify-center">
+			<!-- Filter Select -->
+			<div class="px-4 pt-1 pb-6 flex justify-center">
 				<select
 					class="select select-bordered w-full max-w-xs"
 					id="category-selector"
@@ -120,7 +122,11 @@
 				</select>
 			</div>
 
-			<section id="saved" class="flex flex-wrap justify-evenly gap-4">
+			<!-- Saved notes content -->
+			<section
+				id="saved"
+				class="flex flex-wrap justify-between md:justify-center gap-4"
+			>
 				<section class="mockup-code w-max mx-auto h-64 mb-4 relative">
 					<i
 						class="fa-solid fa-xmark absolute top-5 right-5 hover:text-red-500 duration-300 cursor-pointer"
