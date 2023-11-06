@@ -104,6 +104,22 @@
 
 			<!-- Saved notes section -->
 			<h2 class="text-center font-bold text-2xl py-6">Saved Notes</h2>
+
+			<p class="text-center font-semibold text-lg pb-1">
+				Filter by <i class="fa-solid fa-filter ml-2"></i>
+			</p>
+
+			<div class="px-4 pt-1 pb-4 flex justify-center">
+				<select
+					class="select select-bordered w-full max-w-xs"
+					id="category-selector"
+				>
+					<option selected>All</option>
+					<option>Personal</option>
+					<option>Work</option>
+				</select>
+			</div>
+
 			<section id="saved" class="flex flex-wrap justify-evenly gap-4">
 				<section class="mockup-code w-max mx-auto h-64 mb-4 relative">
 					<i
