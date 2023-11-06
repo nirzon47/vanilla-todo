@@ -1,9 +1,11 @@
 // Taking notes either from localStorage or initializing it
 const notes = JSON.parse(localStorage.getItem('notes')) || []
+// Checks if the user prefers dark mode, if they do, store dark, otherwise store light
 const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches
 	? 'dark'
 	: 'light'
 
+// Gets the current theme from localStorage or prefers
 let currentTheme = localStorage.getItem('theme') || preferred
 
 // DOM elements
@@ -42,6 +44,12 @@ theme.addEventListener('click', () => {
 })
 
 // Functions
+
+/**
+ * Adds a note to the DOM and updates the local storage and rendered notes.
+ *
+ * @return {undefined} Does not return anything.
+ */
 const addNote = () => {
 	if (!currText.value) {
 		return
@@ -63,6 +71,12 @@ const addNote = () => {
 	renderNotes()
 }
 
+/**
+ * Removes a note from the DOM and updates the local storage and rendered notes.
+ *
+ * @param {Element} element - The element representing the note to be removed.
+ * @return {undefined} There is no return value.
+ */
 const removeNote = (element) => {
 	const id = element.parentElement.id
 	deleteNote(id)
@@ -70,6 +84,13 @@ const removeNote = (element) => {
 	renderNotes()
 }
 
+/**
+ * Iterates over the "remove" elements and adds a click event listener to each element.
+ * When an element is clicked, it calls the "removeNote" function.
+ *
+ * @param {type} - No parameters
+ * @return {type} - No return value
+ */
 const addRemoveListener = () => {
 	Array.from(remove).forEach((element) => {
 		element.addEventListener('click', () => {
@@ -78,19 +99,45 @@ const addRemoveListener = () => {
 	})
 }
 
+/**
+ * Deletes a note from the notes array based on the provided ID.
+ *
+ * @param {number} id - The ID of the note to be deleted.
+ */
 const deleteNote = (id) => {
 	const index = notes.findIndex((note) => note.id == id)
 	notes.splice(index, 1)
 }
 
+/**
+ * Updates the local storage with the current state of the notes array.
+ *
+ * @param {none} - This function does not accept any parameters.
+ * @return {none} - This function does not return a value.
+ */
 const updateLocalStorage = () => {
 	localStorage.setItem('notes', JSON.stringify(notes))
 }
 
+/**
+ * Sets the background color of the container element based on the color input.
+ *
+ * @param {string} color - The color to set as the background color.
+ */
 const setColor = (color) => {
 	container.style.backgroundColor = color
 }
 
+/**
+ * Renders filtered notes by clearing the savedNotes element and
+ * iterating over the notes array to generate HTML sections
+ * for each note. Each section contains an ID, a mockup code,
+ * and a category. The generated HTML is appended to the
+ * savedNotes element. Finally, the addRemoveListener function
+ * is called to attach event listeners for removing notes.
+ *
+ * @return {void} This function does not return anything.
+ */
 const renderNotes = () => {
 	savedNotes.innerHTML = ''
 
@@ -126,6 +173,17 @@ const renderNotes = () => {
 	addRemoveListener()
 }
 
+/**
+ * Renders all notes by clearing the savedNotes element and
+ * iterating over the notes array to generate HTML sections
+ * for each note. Each section contains an ID, a mockup code,
+ * and a category. The generated HTML is appended to the
+ * savedNotes element. Finally, the addRemoveListener function
+ * is called to attach event listeners for removing notes.
+ *
+ * @param None
+ * @return None
+ */
 const renderNotesAll = () => {
 	savedNotes.innerHTML = ''
 
@@ -150,6 +208,12 @@ const renderNotesAll = () => {
 	addRemoveListener()
 }
 
+/**
+ * Toggles the theme between light and dark.
+ *
+ * @param {none}
+ * @return {none}
+ */
 const changeTheme = () => {
 	if (currentTheme === 'light') {
 		currentTheme = 'dark'
