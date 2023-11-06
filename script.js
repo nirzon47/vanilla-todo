@@ -7,6 +7,7 @@ const currText = document.getElementById('current-text')
 const savedNotes = document.getElementById('saved')
 const colorPicker = document.getElementById('color-picker')
 const container = currText.parentElement.parentElement
+const remove = document.getElementsByClassName('fa-xmark')
 
 // Event Listeners
 addBtn.addEventListener('click', () => {
@@ -43,6 +44,26 @@ const addNote = () => {
 	renderNotes()
 }
 
+const removeNote = (element) => {
+	const id = element.parentElement.id
+	deleteNote(id)
+	updateLocalStorage()
+	renderNotes()
+}
+
+const addRemoveListener = () => {
+	Array.from(remove).forEach((element) => {
+		element.addEventListener('click', () => {
+			removeNote(element)
+		})
+	})
+}
+
+const deleteNote = (id) => {
+	const index = notes.findIndex((note) => note.id == id)
+	notes.splice(index, 1)
+}
+
 const updateLocalStorage = () => {
 	localStorage.setItem('notes', JSON.stringify(notes))
 }
@@ -71,4 +92,6 @@ const renderNotes = () => {
                                     </div>
                                 </section>`
 	})
+
+	addRemoveListener()
 }
