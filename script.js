@@ -32,6 +32,7 @@ const addNote = () => {
 	).value
 
 	notes.push({
+		id: Date.now(),
 		text: currText.value,
 		bg: container.style.backgroundColor,
 		category: category,
@@ -54,7 +55,7 @@ const renderNotes = () => {
 	savedNotes.innerHTML = ''
 
 	notes.forEach((note) => {
-		savedNotes.innerHTML += `<section class="mockup-code w-max mx-auto h-64 mb-4 relative" style="background-color: ${note.bg}">
+		savedNotes.innerHTML += `<section id="${note.id}" class="mockup-code w-max mx-auto h-64 mb-4 relative" style="background-color: ${note.bg}">
                                     <i class="fa-solid fa-xmark absolute top-5 right-5 hover:text-red-500 duration-300 cursor-pointer"></i>
                                     <div class="flex flex-col justify-between h-full p-4">
                                         <textarea
