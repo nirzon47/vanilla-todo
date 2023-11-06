@@ -20,129 +20,143 @@
 			crossorigin="anonymous"
 		></script>
 	</head>
-	<body class="min-h-screen w-screen pb-8 overflow-x-hidden">
+	<body class="w-screen pb-8 overflow-x-hidden lg:h-screen">
 		<!-- Main heading -->
 		<header>
-			<h1 class="text-center font-bold text-2xl pt-4 pb-5">To-Do</h1>
+			<h1 class="text-center font-bold text-2xl pt-4 pb-5 lg:hidden">To-Do</h1>
 		</header>
 
 		<!-- Content -->
-		<main class="w-full">
-			<!-- Current Note -->
-			<section class="mockup-code w-max mx-auto h-64" id="container">
-				<div class="flex flex-col justify-between h-full p-4">
-					<textarea
-						name=""
-						id="current-text"
-						class="bg-transparent resize-none outline-none font-mono ml-3"
-						rows="10"
-						cols="10"
-						maxlength="120"
-					></textarea>
-					<button class="btn btn-primary btn-sm self-end mb-2" id="add">
-						Add
-					</button>
-				</div>
-			</section>
-
-			<!-- Category options -->
-			<section
-				class="p-4 flex flex-row gap-x-2 flex-wrap justify-center items-center"
-			>
-				<div class="form-control">
-					<label
-						class="label cursor-pointer flex gap-x-3 items-center justify-center"
-					>
-						<span class="label-text">None</span>
-						<input
-							type="radio"
-							name="category"
-							class="radio radio-primary radio-sm"
-							value=""
-							checked
-						/>
-					</label>
-				</div>
-				<div class="form-control">
-					<label
-						class="label cursor-pointer flex gap-x-3 items-center justify-center"
-					>
-						<span class="label-text">Work</span>
-						<input
-							type="radio"
-							name="category"
-							class="radio radio-secondary radio-sm"
-							value="Work"
-						/>
-					</label>
-				</div>
-				<div class="form-control">
-					<label
-						class="label cursor-pointer flex gap-x-3 items-center justify-center"
-					>
-						<span class="label-text">Personal</span>
-						<input
-							type="radio"
-							name="category"
-							class="radio radio-accent radio-sm"
-							value="Personal"
-						/>
-					</label>
-				</div>
-			</section>
-
-			<!-- Color picker -->
-			<section class="flex p-4 justify-center items-center">
-				<input
-					type="color"
-					name="custom"
-					class="rounded-full bg-transparent w-16 h-8"
-					id="color-picker"
-					value="#000000"
-				/>
-			</section>
-
-			<!-- Saved notes heading -->
-			<h2 class="text-center font-bold text-2xl py-6">Saved Notes</h2>
-
-			<!-- Filter -->
-			<p class="text-center font-semibold text-lg pb-1">
-				Filter by <i class="fa-solid fa-filter ml-2"></i>
-			</p>
-
-			<!-- Filter Select -->
-			<div class="px-4 pt-1 pb-6 flex justify-center">
-				<select
-					class="select select-bordered w-full max-w-xs"
-					id="category-selector"
+		<main class="w-full lg:h-screen lg:grid lg:grid-cols-6 overflow-hidden">
+			<!-- Make Notes -->
+			<section class="lg:col-span-2 lg:h-screen lg:sticky lg:top-0">
+				<h1
+					class="text-center font-bold text-2xl py-6 lg:mb-28 hidden lg:block"
 				>
-					<option selected>All</option>
-					<option>Personal</option>
-					<option>Work</option>
-				</select>
-			</div>
-
-			<!-- Saved notes content -->
-			<section
-				id="saved"
-				class="flex flex-wrap justify-between md:justify-center gap-4"
-			>
-				<section class="mockup-code w-max mx-auto h-64 mb-4 relative">
-					<i
-						class="fa-solid fa-xmark absolute top-5 right-5 hover:text-red-500 duration-300 cursor-pointer"
-					></i>
+					To-Do
+				</h1>
+				<!-- Current Note -->
+				<section class="mockup-code w-max mx-auto h-64" id="container">
 					<div class="flex flex-col justify-between h-full p-4">
 						<textarea
+							name=""
+							id="current-text"
 							class="bg-transparent resize-none outline-none font-mono ml-3"
 							rows="10"
 							cols="10"
 							maxlength="120"
-							disabled
-						>
-The quick brown fox jumped over the lazy slow dog</textarea
-						>
-						<p class="font-bold text-center">Work</p>
+						></textarea>
+						<button class="btn btn-primary btn-sm self-end mb-2" id="add">
+							Add
+						</button>
 					</div>
+				</section>
+
+				<!-- Category options -->
+				<section
+					class="p-4 flex flex-row gap-x-2 flex-wrap justify-center items-center"
+				>
+					<div class="form-control">
+						<label
+							class="label cursor-pointer flex gap-x-3 items-center justify-center"
+						>
+							<span class="label-text">None</span>
+							<input
+								type="radio"
+								name="category"
+								class="radio radio-primary radio-sm"
+								value=""
+								checked
+							/>
+						</label>
+					</div>
+					<div class="form-control">
+						<label
+							class="label cursor-pointer flex gap-x-3 items-center justify-center"
+						>
+							<span class="label-text">Work</span>
+							<input
+								type="radio"
+								name="category"
+								class="radio radio-secondary radio-sm"
+								value="Work"
+							/>
+						</label>
+					</div>
+					<div class="form-control">
+						<label
+							class="label cursor-pointer flex gap-x-3 items-center justify-center"
+						>
+							<span class="label-text">Personal</span>
+							<input
+								type="radio"
+								name="category"
+								class="radio radio-accent radio-sm"
+								value="Personal"
+							/>
+						</label>
+					</div>
+				</section>
+
+				<!-- Color picker -->
+				<section class="flex p-4 justify-center items-center">
+					<input
+						type="color"
+						name="custom"
+						class="rounded-full bg-transparent w-16 h-8"
+						id="color-picker"
+						value="#000000"
+					/>
+				</section>
+			</section>
+
+			<!-- See Notes -->
+			<section class="lg:col-span-4 lg:overflow-auto">
+				<!-- Saved Notes Controls -->
+				<div class="lg:sticky lg:top-0 lg:z-10 lg:bg-base-100">
+					<!-- Saved notes heading -->
+					<h2 class="text-center font-bold text-2xl py-6">Saved Notes</h2>
+
+					<!-- Filter -->
+					<p class="text-center font-semibold text-lg pb-1">
+						Filter by <i class="fa-solid fa-filter ml-2"></i>
+					</p>
+
+					<!-- Filter Select -->
+					<div class="px-4 pt-1 pb-6 flex justify-center">
+						<select
+							class="select select-bordered w-full max-w-xs"
+							id="category-selector"
+						>
+							<option selected>All</option>
+							<option>Personal</option>
+							<option>Work</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- Saved notes content -->
+				<section
+					id="saved"
+					class="flex flex-wrap justify-between md:justify-center gap-4 overflow-scroll"
+				>
+					<section class="mockup-code w-max mx-auto h-64 mb-4 relative">
+						<i
+							class="fa-solid fa-xmark absolute top-5 right-5 hover:text-red-500 duration-300 cursor-pointer"
+						></i>
+						<div class="flex flex-col justify-between h-full p-4">
+							<textarea
+								class="bg-transparent resize-none outline-none font-mono ml-3"
+								rows="10"
+								cols="10"
+								maxlength="120"
+								disabled
+							>
+The quick brown fox jumped over the lazy slow dog</textarea
+							>
+							<p class="font-bold text-center">Work</p>
+						</div>
+					</section>
 				</section>
 			</section>
 		</main>
