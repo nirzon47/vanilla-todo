@@ -10,13 +10,23 @@
 
 		<!-- JavaScript -->
 		<script src="script.js" defer></script>
+
+		<!-- Font Awesome -->
+		<script
+			src="https://kit.fontawesome.com/d521bbec8a.js"
+			crossorigin="anonymous"
+		></script>
 	</head>
 	<body class="min-h-screen w-screen pb-8">
+		<!-- Main heading -->
 		<header>
 			<h1 class="text-center font-bold text-2xl pt-4 pb-5">To-Do</h1>
 		</header>
+
+		<!-- Content -->
 		<main class="w-full">
-			<section class="mockup-code w-max mx-auto h-64">
+			<!-- Current Note -->
+			<section class="mockup-code w-max mx-auto h-64" id="container">
 				<div class="flex flex-col justify-between h-full p-4">
 					<textarea
 						name=""
@@ -32,15 +42,71 @@
 				</div>
 			</section>
 
+			<section
+				class="p-4 flex flex-row gap-x-2 flex-wrap justify-center items-center"
+			>
+				<div class="form-control">
+					<label
+						class="label cursor-pointer flex gap-x-3 items-center justify-center"
+					>
+						<span class="label-text">None</span>
+						<input
+							type="radio"
+							name="category"
+							class="radio radio-primary radio-sm"
+							checked
+						/>
+					</label>
+				</div>
+				<div class="form-control">
+					<label
+						class="label cursor-pointer flex gap-x-3 items-center justify-center"
+					>
+						<span class="label-text">Work</span>
+						<input
+							type="radio"
+							name="category"
+							class="radio radio-secondary radio-sm"
+						/>
+					</label>
+				</div>
+				<div class="form-control">
+					<label
+						class="label cursor-pointer flex gap-x-3 items-center justify-center"
+					>
+						<span class="label-text">Personal</span>
+						<input
+							type="radio"
+							name="category"
+							class="radio radio-accent radio-sm"
+						/>
+					</label>
+				</div>
+			</section>
+
+			<section class="flex p-4 justify-center items-center">
+				<input
+					type="color"
+					name="custom"
+					class="rounded-full bg-transparent w-16 h-8"
+					id="color-picker"
+					value="#000000"
+				/>
+			</section>
+
 			<h2 class="text-center font-bold text-2xl py-6">Saved Notes</h2>
 			<section id="saved">
-				<section class="mockup-code w-max mx-auto h-64 mb-4">
+				<section class="mockup-code w-max mx-auto h-64 mb-4 relative">
+					<i
+						class="fa-solid fa-xmark absolute top-5 right-5 hover:text-red-500 duration-300 cursor-pointer"
+					></i>
 					<div class="flex flex-col justify-between h-full p-4">
 						<textarea
 							class="bg-transparent resize-none outline-none font-mono ml-3"
 							rows="10"
 							cols="10"
 							maxlength="120"
+							disabled
 						></textarea>
 					</div>
 				</section>
