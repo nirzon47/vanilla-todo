@@ -1,5 +1,10 @@
 // Taking notes either from localStorage or initializing it
 const notes = JSON.parse(localStorage.getItem('notes')) || []
+const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches
+	? 'dark'
+	: 'light'
+
+let currentTheme = localStorage.getItem('theme') || preferred
 
 // DOM elements
 const addBtn = document.getElementById('add')
@@ -9,6 +14,7 @@ const colorPicker = document.getElementById('color-picker')
 const container = currText.parentElement.parentElement
 const remove = document.getElementsByClassName('fa-xmark')
 const categorySelector = document.getElementById('category-selector')
+const theme = document.getElementById('theme')
 
 // Event Listeners
 addBtn.addEventListener('click', () => {
@@ -21,10 +27,18 @@ colorPicker.addEventListener('input', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	renderNotes()
+	if (currentTheme === 'light') {
+		theme.checked = true
+		document.documentElement.setAttribute('data-theme', 'light')
+	}
 })
 
 categorySelector.addEventListener('change', () => {
 	renderNotes()
+})
+
+theme.addEventListener('click', () => {
+	changeTheme()
 })
 
 // Functions
@@ -134,4 +148,16 @@ const renderNotesAll = () => {
 	})
 
 	addRemoveListener()
+}
+
+const changeTheme = () => {
+	if (currentTheme === 'light') {
+		currentTheme = 'dark'
+		document.documentElement.setAttribute('data-theme', 'dark')
+	} else {
+		currentTheme = 'light'
+		document.documentElement.setAttribute('data-theme', 'light')
+	}
+
+	localStorage.setItem('theme', currentTheme)
 }
