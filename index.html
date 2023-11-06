@@ -42,6 +42,7 @@
 				</div>
 			</section>
 
+			<!-- Category options -->
 			<section
 				class="p-4 flex flex-row gap-x-2 flex-wrap justify-center items-center"
 			>
@@ -54,6 +55,7 @@
 							type="radio"
 							name="category"
 							class="radio radio-primary radio-sm"
+							value=""
 							checked
 						/>
 					</label>
@@ -67,6 +69,7 @@
 							type="radio"
 							name="category"
 							class="radio radio-secondary radio-sm"
+							value="work"
 						/>
 					</label>
 				</div>
@@ -79,11 +82,13 @@
 							type="radio"
 							name="category"
 							class="radio radio-accent radio-sm"
+							value="personal"
 						/>
 					</label>
 				</div>
 			</section>
 
+			<!-- Color picker -->
 			<section class="flex p-4 justify-center items-center">
 				<input
 					type="color"
@@ -94,6 +99,7 @@
 				/>
 			</section>
 
+			<!-- Saved notes section -->
 			<h2 class="text-center font-bold text-2xl py-6">Saved Notes</h2>
 			<section id="saved">
 				<section class="mockup-code w-max mx-auto h-64 mb-4 relative">
@@ -107,7 +113,10 @@
 							cols="10"
 							maxlength="120"
 							disabled
-						></textarea>
+						>
+The quick brown fox jumped over the lazy slow dog</textarea
+						>
+						<p class="font-bold text-center">Work</p>
 					</div>
 				</section>
 			</section>
