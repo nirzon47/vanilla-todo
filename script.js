@@ -17,6 +17,10 @@ colorPicker.addEventListener('input', () => {
 	setColor(colorPicker.value)
 })
 
+document.addEventListener('DOMContentLoaded', () => {
+	renderNotes()
+})
+
 // Functions
 const addNote = () => {
 	if (!currText.value) {
@@ -35,6 +39,7 @@ const addNote = () => {
 	currText.value = ''
 
 	updateLocalStorage()
+	renderNotes()
 }
 
 const updateLocalStorage = () => {
@@ -43,4 +48,26 @@ const updateLocalStorage = () => {
 
 const setColor = (color) => {
 	container.style.backgroundColor = color
+}
+
+const renderNotes = () => {
+	savedNotes.innerHTML = ''
+
+	notes.forEach((note) => {
+		savedNotes.innerHTML += `<section class="mockup-code w-max mx-auto h-64 mb-4 relative" style="background-color: ${note.bg}">
+                                    <i class="fa-solid fa-xmark absolute top-5 right-5 hover:text-red-500 duration-300 cursor-pointer"></i>
+                                    <div class="flex flex-col justify-between h-full p-4">
+                                        <textarea
+                                            class="bg-transparent resize-none outline-none font-mono ml-3"
+                                            rows="10"
+                                            cols="10"
+                                            maxlength="120"
+                                            disabled
+                                        >
+                                            ${note.text}
+                                        </textarea>
+                                        <p class="font-bold text-center">${note.category}</p>
+                                    </div>
+                                </section>`
+	})
 }
