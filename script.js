@@ -8,6 +8,7 @@ const savedNotes = document.getElementById('saved')
 const colorPicker = document.getElementById('color-picker')
 const container = currText.parentElement.parentElement
 const remove = document.getElementsByClassName('fa-xmark')
+const categorySelector = document.getElementById('category-selector')
 
 // Event Listeners
 addBtn.addEventListener('click', () => {
@@ -19,6 +20,10 @@ colorPicker.addEventListener('input', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+	renderNotes()
+})
+
+categorySelector.addEventListener('change', () => {
 	renderNotes()
 })
 
@@ -73,6 +78,41 @@ const setColor = (color) => {
 }
 
 const renderNotes = () => {
+	savedNotes.innerHTML = ''
+
+	const activeCategory = categorySelector.value
+
+	if (activeCategory === 'All') {
+		renderNotesAll()
+		return
+	}
+
+	notes.filter((note) => {
+		if (note.category !== activeCategory) {
+			return
+		}
+
+		savedNotes.innerHTML += `<section id="${note.id}" class="mockup-code w-max mx-auto h-64 mb-4 relative" style="background-color: ${note.bg}">
+                                    <i class="fa-solid fa-xmark absolute top-5 right-5 hover:text-red-500 duration-300 cursor-pointer"></i>
+                                    <div class="flex flex-col justify-between h-full p-4">
+                                        <textarea
+                                            class="bg-transparent resize-none outline-none font-mono ml-3"
+                                            rows="10"
+                                            cols="10"
+                                            maxlength="120"
+                                            disabled
+                                        >
+                                            ${note.text}
+                                        </textarea>
+                                        <p class="font-bold text-center">${note.category}</p>
+                                    </div>
+                                </section>`
+	})
+
+	addRemoveListener()
+}
+
+const renderNotesAll = () => {
 	savedNotes.innerHTML = ''
 
 	notes.forEach((note) => {
